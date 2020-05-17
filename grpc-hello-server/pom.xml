@@ -42,6 +42,7 @@
     </dependency>
   </dependencies>
   <build>
+    <finalName>grpc-hello-server</finalName>
     <extensions>
       <extension>
         <groupId>kr.motd.maven</groupId>

@@ -1,0 +1,6 @@
+version: '3'
+services:
+  grpc-server:
+    image: "dhan/grpc-hello-server:1.0"
+    ports:
+      - "8080:8080"
