@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92de56eb-7fb5-4ad2-a47e-2425b2fc05d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../grpc-hello-client/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/service.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grpc-hello-client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc-hello-client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grpc-hello-client/src/main/java/com/example/grpc/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc-hello-client/src/main/java/com/example/grpc/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
