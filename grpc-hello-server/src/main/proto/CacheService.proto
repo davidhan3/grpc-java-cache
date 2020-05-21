@@ -1,0 +1,37 @@
+syntax = "proto3";
+package com.dhan.cache;
+
+option java_multiple_files = true;
+
+// Request payload
+message PingRequest {
+  string message = 1;
+}
+
+message PingResponse {
+  string message = 1;
+}
+
+message GetValueRequest{
+  string key = 1;
+}
+
+message GetValueResponse{
+  string value = 1;
+}
+
+message PutValueRequest{
+  string key = 1;
+  string value = 2;
+}
+
+message PutValueResponse{
+  bool response = 1;
+}
+
+service CacheService {
+  // Define a RPC operation
+  rpc ping(PingRequest) returns (PingResponse);
+  rpc getValue(GetValueRequest) returns (GetValueResponse);
+  rpc putValue(PutValueRequest) returns (PutValueResponse);
+}
