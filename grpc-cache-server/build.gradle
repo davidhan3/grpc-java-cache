@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.dhan.cache"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.0"
 description = "grpc-cache-server"
 
 repositories {
@@ -31,7 +31,7 @@ protobuf {
     }
     plugins {
         grpc {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.29.0"
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
         }
     }
     generateProtoTasks {

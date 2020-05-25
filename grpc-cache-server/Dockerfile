@@ -4,6 +4,6 @@ MAINTAINER davidhan1619@gmail.com
 
 WORKDIR /app
 
-COPY target/grpc-hello-server-jar-with-dependencies.jar /app/grpc-hello-server.jar
+COPY ./build/libs/grpc-cache-server-1.0.0.jar /app/grpc-cache-server.jar
 
-CMD java -jar grpc-hello-server.jar
+CMD exec java -jar grpc-cache-server.jar
