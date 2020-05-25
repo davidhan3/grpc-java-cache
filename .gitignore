@@ -26,7 +26,6 @@
 **target/
 
 ### Gradle ###
-**.gradle
 **/build/
 **!src/**/build/
 
