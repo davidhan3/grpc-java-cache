@@ -3,7 +3,7 @@ package com.dhan.cache;
 
 option java_multiple_files = true;
 
-// Request payload
+//Ping
 message PingRequest {
   string message = 1;
 }
@@ -12,6 +12,7 @@ message PingResponse {
   string message = 1;
 }
 
+//Get Value
 message GetValueRequest{
   string key = 1;
 }
@@ -20,6 +21,7 @@ message GetValueResponse{
   string value = 1;
 }
 
+//Put Value
 message PutValueRequest{
   string key = 1;
   string value = 2;
@@ -29,9 +31,27 @@ message PutValueResponse{
   bool response = 1;
 }
 
+//Delete Value
+message DeleteValueRequest{
+  string key = 1;
+}
+
+message DeleteValueResponse{
+  bool response = 1;
+}
+
+//Delete All Values
+message DeleteAllValuesRequest{}
+
+message DeleteAllValuesResponse{
+  bool response = 1;
+}
+
 service CacheService {
   // Define a RPC operation
   rpc ping(PingRequest) returns (PingResponse);
   rpc getValue(GetValueRequest) returns (GetValueResponse);
   rpc putValue(PutValueRequest) returns (PutValueResponse);
+  rpc deleteValue(DeleteValueRequest) returns (DeleteValueResponse);
+  rpc deleteAllValues(DeleteAllValuesRequest) returns (DeleteAllValuesResponse);
 }

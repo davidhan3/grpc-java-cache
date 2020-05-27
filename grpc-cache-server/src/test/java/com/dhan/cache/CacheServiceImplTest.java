@@ -35,7 +35,9 @@ public class CacheServiceImplTest {
 
     @Test
     public void testPing() throws Exception {
-        PingResponse response = stub.ping(PingRequest.newBuilder().setMessage("Ping").build());
+        PingResponse response = stub.ping(PingRequest.newBuilder()
+                                                     .setMessage("Ping")
+                                                     .build());
 
         System.out.println(response);
 
@@ -44,7 +46,10 @@ public class CacheServiceImplTest {
 
     @Test
     public void testPutThenGet() throws Exception {
-        PutValueResponse putResponse = stub.putValue(PutValueRequest.newBuilder().setKey("Foo").setValue("Bar").build());
+        PutValueResponse putResponse = stub.putValue(PutValueRequest.newBuilder()
+                                                                    .setKey("Foo")
+                                                                    .setValue("Bar")
+                                                                    .build());
 
         System.out.println("Put Value response: :" + putResponse);
 

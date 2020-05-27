@@ -120,6 +120,68 @@ public final class CacheServiceGrpc {
     return getPutValueMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.dhan.cache.DeleteValueRequest,
+      com.dhan.cache.DeleteValueResponse> getDeleteValueMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "deleteValue",
+      requestType = com.dhan.cache.DeleteValueRequest.class,
+      responseType = com.dhan.cache.DeleteValueResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.dhan.cache.DeleteValueRequest,
+      com.dhan.cache.DeleteValueResponse> getDeleteValueMethod() {
+    io.grpc.MethodDescriptor<com.dhan.cache.DeleteValueRequest, com.dhan.cache.DeleteValueResponse> getDeleteValueMethod;
+    if ((getDeleteValueMethod = CacheServiceGrpc.getDeleteValueMethod) == null) {
+      synchronized (CacheServiceGrpc.class) {
+        if ((getDeleteValueMethod = CacheServiceGrpc.getDeleteValueMethod) == null) {
+          CacheServiceGrpc.getDeleteValueMethod = getDeleteValueMethod =
+              io.grpc.MethodDescriptor.<com.dhan.cache.DeleteValueRequest, com.dhan.cache.DeleteValueResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "deleteValue"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.dhan.cache.DeleteValueRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.dhan.cache.DeleteValueResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CacheServiceMethodDescriptorSupplier("deleteValue"))
+              .build();
+        }
+      }
+    }
+    return getDeleteValueMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.dhan.cache.DeleteAllValuesRequest,
+      com.dhan.cache.DeleteAllValuesResponse> getDeleteAllValuesMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "deleteAllValues",
+      requestType = com.dhan.cache.DeleteAllValuesRequest.class,
+      responseType = com.dhan.cache.DeleteAllValuesResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.dhan.cache.DeleteAllValuesRequest,
+      com.dhan.cache.DeleteAllValuesResponse> getDeleteAllValuesMethod() {
+    io.grpc.MethodDescriptor<com.dhan.cache.DeleteAllValuesRequest, com.dhan.cache.DeleteAllValuesResponse> getDeleteAllValuesMethod;
+    if ((getDeleteAllValuesMethod = CacheServiceGrpc.getDeleteAllValuesMethod) == null) {
+      synchronized (CacheServiceGrpc.class) {
+        if ((getDeleteAllValuesMethod = CacheServiceGrpc.getDeleteAllValuesMethod) == null) {
+          CacheServiceGrpc.getDeleteAllValuesMethod = getDeleteAllValuesMethod =
+              io.grpc.MethodDescriptor.<com.dhan.cache.DeleteAllValuesRequest, com.dhan.cache.DeleteAllValuesResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "deleteAllValues"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.dhan.cache.DeleteAllValuesRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.dhan.cache.DeleteAllValuesResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CacheServiceMethodDescriptorSupplier("deleteAllValues"))
+              .build();
+        }
+      }
+    }
+    return getDeleteAllValuesMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -192,6 +254,20 @@ public final class CacheServiceGrpc {
       asyncUnimplementedUnaryCall(getPutValueMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void deleteValue(com.dhan.cache.DeleteValueRequest request,
+        io.grpc.stub.StreamObserver<com.dhan.cache.DeleteValueResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getDeleteValueMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void deleteAllValues(com.dhan.cache.DeleteAllValuesRequest request,
+        io.grpc.stub.StreamObserver<com.dhan.cache.DeleteAllValuesResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getDeleteAllValuesMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -215,6 +291,20 @@ public final class CacheServiceGrpc {
                 com.dhan.cache.PutValueRequest,
                 com.dhan.cache.PutValueResponse>(
                   this, METHODID_PUT_VALUE)))
+          .addMethod(
+            getDeleteValueMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.dhan.cache.DeleteValueRequest,
+                com.dhan.cache.DeleteValueResponse>(
+                  this, METHODID_DELETE_VALUE)))
+          .addMethod(
+            getDeleteAllValuesMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.dhan.cache.DeleteAllValuesRequest,
+                com.dhan.cache.DeleteAllValuesResponse>(
+                  this, METHODID_DELETE_ALL_VALUES)))
           .build();
     }
   }
@@ -259,6 +349,22 @@ public final class CacheServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getPutValueMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void deleteValue(com.dhan.cache.DeleteValueRequest request,
+        io.grpc.stub.StreamObserver<com.dhan.cache.DeleteValueResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getDeleteValueMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void deleteAllValues(com.dhan.cache.DeleteAllValuesRequest request,
+        io.grpc.stub.StreamObserver<com.dhan.cache.DeleteAllValuesResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getDeleteAllValuesMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -297,6 +403,20 @@ public final class CacheServiceGrpc {
     public com.dhan.cache.PutValueResponse putValue(com.dhan.cache.PutValueRequest request) {
       return blockingUnaryCall(
           getChannel(), getPutValueMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.dhan.cache.DeleteValueResponse deleteValue(com.dhan.cache.DeleteValueRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getDeleteValueMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.dhan.cache.DeleteAllValuesResponse deleteAllValues(com.dhan.cache.DeleteAllValuesRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getDeleteAllValuesMethod(), getCallOptions(), request);
     }
   }
 
@@ -340,11 +460,29 @@ public final class CacheServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getPutValueMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.dhan.cache.DeleteValueResponse> deleteValue(
+        com.dhan.cache.DeleteValueRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getDeleteValueMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.dhan.cache.DeleteAllValuesResponse> deleteAllValues(
+        com.dhan.cache.DeleteAllValuesRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getDeleteAllValuesMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_PING = 0;
   private static final int METHODID_GET_VALUE = 1;
   private static final int METHODID_PUT_VALUE = 2;
+  private static final int METHODID_DELETE_VALUE = 3;
+  private static final int METHODID_DELETE_ALL_VALUES = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -374,6 +512,14 @@ public final class CacheServiceGrpc {
         case METHODID_PUT_VALUE:
           serviceImpl.putValue((com.dhan.cache.PutValueRequest) request,
               (io.grpc.stub.StreamObserver<com.dhan.cache.PutValueResponse>) responseObserver);
+          break;
+        case METHODID_DELETE_VALUE:
+          serviceImpl.deleteValue((com.dhan.cache.DeleteValueRequest) request,
+              (io.grpc.stub.StreamObserver<com.dhan.cache.DeleteValueResponse>) responseObserver);
+          break;
+        case METHODID_DELETE_ALL_VALUES:
+          serviceImpl.deleteAllValues((com.dhan.cache.DeleteAllValuesRequest) request,
+              (io.grpc.stub.StreamObserver<com.dhan.cache.DeleteAllValuesResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -439,6 +585,8 @@ public final class CacheServiceGrpc {
               .addMethod(getPingMethod())
               .addMethod(getGetValueMethod())
               .addMethod(getPutValueMethod())
+              .addMethod(getDeleteValueMethod())
+              .addMethod(getDeleteAllValuesMethod())
               .build();
         }
       }

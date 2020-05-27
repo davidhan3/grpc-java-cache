@@ -5,30 +5,29 @@ package com.dhan.cache;
 
 /**
  * <pre>
- *Put Value
+ *Delete Value
  * </pre>
  *
- * Protobuf type {@code com.dhan.cache.PutValueRequest}
+ * Protobuf type {@code com.dhan.cache.DeleteValueRequest}
  */
-public  final class PutValueRequest extends
+public  final class DeleteValueRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:com.dhan.cache.PutValueRequest)
-    PutValueRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:com.dhan.cache.DeleteValueRequest)
+    DeleteValueRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use PutValueRequest.newBuilder() to construct.
-  private PutValueRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use DeleteValueRequest.newBuilder() to construct.
+  private DeleteValueRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private PutValueRequest() {
+  private DeleteValueRequest() {
     key_ = "";
-    value_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new PutValueRequest();
+    return new DeleteValueRequest();
   }
 
   @java.lang.Override
@@ -36,7 +35,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private PutValueRequest(
+  private DeleteValueRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -60,12 +59,6 @@ private static final long serialVersionUID = 0L;
             key_ = s;
             break;
           }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            value_ = s;
-            break;
-          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -87,15 +80,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_PutValueRequest_descriptor;
+    return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_DeleteValueRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_PutValueRequest_fieldAccessorTable
+    return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_DeleteValueRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.dhan.cache.PutValueRequest.class, com.dhan.cache.PutValueRequest.Builder.class);
+            com.dhan.cache.DeleteValueRequest.class, com.dhan.cache.DeleteValueRequest.Builder.class);
   }
 
   public static final int KEY_FIELD_NUMBER = 1;
@@ -134,42 +127,6 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int VALUE_FIELD_NUMBER = 2;
-  private volatile java.lang.Object value_;
-  /**
-   * <code>string value = 2;</code>
-   * @return The value.
-   */
-  public java.lang.String getValue() {
-    java.lang.Object ref = value_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      value_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string value = 2;</code>
-   * @return The bytes for value.
-   */
-  public com.google.protobuf.ByteString
-      getValueBytes() {
-    java.lang.Object ref = value_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      value_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -187,9 +144,6 @@ private static final long serialVersionUID = 0L;
     if (!getKeyBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, key_);
     }
-    if (!getValueBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, value_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -202,9 +156,6 @@ private static final long serialVersionUID = 0L;
     if (!getKeyBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, key_);
     }
-    if (!getValueBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, value_);
-    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -215,15 +166,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.dhan.cache.PutValueRequest)) {
+    if (!(obj instanceof com.dhan.cache.DeleteValueRequest)) {
       return super.equals(obj);
     }
-    com.dhan.cache.PutValueRequest other = (com.dhan.cache.PutValueRequest) obj;
+    com.dhan.cache.DeleteValueRequest other = (com.dhan.cache.DeleteValueRequest) obj;
 
     if (!getKey()
         .equals(other.getKey())) return false;
-    if (!getValue()
-        .equals(other.getValue())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -237,76 +186,74 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + KEY_FIELD_NUMBER;
     hash = (53 * hash) + getKey().hashCode();
-    hash = (37 * hash) + VALUE_FIELD_NUMBER;
-    hash = (53 * hash) + getValue().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.dhan.cache.PutValueRequest parseFrom(
+  public static com.dhan.cache.DeleteValueRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.dhan.cache.PutValueRequest parseFrom(
+  public static com.dhan.cache.DeleteValueRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.dhan.cache.PutValueRequest parseFrom(
+  public static com.dhan.cache.DeleteValueRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.dhan.cache.PutValueRequest parseFrom(
+  public static com.dhan.cache.DeleteValueRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.dhan.cache.PutValueRequest parseFrom(byte[] data)
+  public static com.dhan.cache.DeleteValueRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.dhan.cache.PutValueRequest parseFrom(
+  public static com.dhan.cache.DeleteValueRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.dhan.cache.PutValueRequest parseFrom(java.io.InputStream input)
+  public static com.dhan.cache.DeleteValueRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.dhan.cache.PutValueRequest parseFrom(
+  public static com.dhan.cache.DeleteValueRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.dhan.cache.PutValueRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.dhan.cache.DeleteValueRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.dhan.cache.PutValueRequest parseDelimitedFrom(
+  public static com.dhan.cache.DeleteValueRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.dhan.cache.PutValueRequest parseFrom(
+  public static com.dhan.cache.DeleteValueRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.dhan.cache.PutValueRequest parseFrom(
+  public static com.dhan.cache.DeleteValueRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -319,7 +266,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.dhan.cache.PutValueRequest prototype) {
+  public static Builder newBuilder(com.dhan.cache.DeleteValueRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -336,29 +283,29 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *Put Value
+   *Delete Value
    * </pre>
    *
-   * Protobuf type {@code com.dhan.cache.PutValueRequest}
+   * Protobuf type {@code com.dhan.cache.DeleteValueRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:com.dhan.cache.PutValueRequest)
-      com.dhan.cache.PutValueRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:com.dhan.cache.DeleteValueRequest)
+      com.dhan.cache.DeleteValueRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_PutValueRequest_descriptor;
+      return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_DeleteValueRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_PutValueRequest_fieldAccessorTable
+      return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_DeleteValueRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.dhan.cache.PutValueRequest.class, com.dhan.cache.PutValueRequest.Builder.class);
+              com.dhan.cache.DeleteValueRequest.class, com.dhan.cache.DeleteValueRequest.Builder.class);
     }
 
-    // Construct using com.dhan.cache.PutValueRequest.newBuilder()
+    // Construct using com.dhan.cache.DeleteValueRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -378,25 +325,23 @@ private static final long serialVersionUID = 0L;
       super.clear();
       key_ = "";
 
-      value_ = "";
-
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_PutValueRequest_descriptor;
+      return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_DeleteValueRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.dhan.cache.PutValueRequest getDefaultInstanceForType() {
-      return com.dhan.cache.PutValueRequest.getDefaultInstance();
+    public com.dhan.cache.DeleteValueRequest getDefaultInstanceForType() {
+      return com.dhan.cache.DeleteValueRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.dhan.cache.PutValueRequest build() {
-      com.dhan.cache.PutValueRequest result = buildPartial();
+    public com.dhan.cache.DeleteValueRequest build() {
+      com.dhan.cache.DeleteValueRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -404,10 +349,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.dhan.cache.PutValueRequest buildPartial() {
-      com.dhan.cache.PutValueRequest result = new com.dhan.cache.PutValueRequest(this);
+    public com.dhan.cache.DeleteValueRequest buildPartial() {
+      com.dhan.cache.DeleteValueRequest result = new com.dhan.cache.DeleteValueRequest(this);
       result.key_ = key_;
-      result.value_ = value_;
       onBuilt();
       return result;
     }
@@ -446,22 +390,18 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.dhan.cache.PutValueRequest) {
-        return mergeFrom((com.dhan.cache.PutValueRequest)other);
+      if (other instanceof com.dhan.cache.DeleteValueRequest) {
+        return mergeFrom((com.dhan.cache.DeleteValueRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.dhan.cache.PutValueRequest other) {
-      if (other == com.dhan.cache.PutValueRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.dhan.cache.DeleteValueRequest other) {
+      if (other == com.dhan.cache.DeleteValueRequest.getDefaultInstance()) return this;
       if (!other.getKey().isEmpty()) {
         key_ = other.key_;
-        onChanged();
-      }
-      if (!other.getValue().isEmpty()) {
-        value_ = other.value_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -479,11 +419,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.dhan.cache.PutValueRequest parsedMessage = null;
+      com.dhan.cache.DeleteValueRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.dhan.cache.PutValueRequest) e.getUnfinishedMessage();
+        parsedMessage = (com.dhan.cache.DeleteValueRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -568,82 +508,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
-    private java.lang.Object value_ = "";
-    /**
-     * <code>string value = 2;</code>
-     * @return The value.
-     */
-    public java.lang.String getValue() {
-      java.lang.Object ref = value_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        value_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string value = 2;</code>
-     * @return The bytes for value.
-     */
-    public com.google.protobuf.ByteString
-        getValueBytes() {
-      java.lang.Object ref = value_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        value_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string value = 2;</code>
-     * @param value The value to set.
-     * @return This builder for chaining.
-     */
-    public Builder setValue(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      value_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string value = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearValue() {
-      
-      value_ = getDefaultInstance().getValue();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string value = 2;</code>
-     * @param value The bytes for value to set.
-     * @return This builder for chaining.
-     */
-    public Builder setValueBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      value_ = value;
-      onChanged();
-      return this;
-    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -657,41 +521,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:com.dhan.cache.PutValueRequest)
+    // @@protoc_insertion_point(builder_scope:com.dhan.cache.DeleteValueRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:com.dhan.cache.PutValueRequest)
-  private static final com.dhan.cache.PutValueRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:com.dhan.cache.DeleteValueRequest)
+  private static final com.dhan.cache.DeleteValueRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.dhan.cache.PutValueRequest();
+    DEFAULT_INSTANCE = new com.dhan.cache.DeleteValueRequest();
   }
 
-  public static com.dhan.cache.PutValueRequest getDefaultInstance() {
+  public static com.dhan.cache.DeleteValueRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<PutValueRequest>
-      PARSER = new com.google.protobuf.AbstractParser<PutValueRequest>() {
+  private static final com.google.protobuf.Parser<DeleteValueRequest>
+      PARSER = new com.google.protobuf.AbstractParser<DeleteValueRequest>() {
     @java.lang.Override
-    public PutValueRequest parsePartialFrom(
+    public DeleteValueRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new PutValueRequest(input, extensionRegistry);
+      return new DeleteValueRequest(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<PutValueRequest> parser() {
+  public static com.google.protobuf.Parser<DeleteValueRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<PutValueRequest> getParserForType() {
+  public com.google.protobuf.Parser<DeleteValueRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.dhan.cache.PutValueRequest getDefaultInstanceForType() {
+  public com.dhan.cache.DeleteValueRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

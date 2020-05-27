@@ -5,29 +5,28 @@ package com.dhan.cache;
 
 /**
  * <pre>
- *Ping
+ *Delete All Values
  * </pre>
  *
- * Protobuf type {@code com.dhan.cache.PingRequest}
+ * Protobuf type {@code com.dhan.cache.DeleteAllValuesRequest}
  */
-public  final class PingRequest extends
+public  final class DeleteAllValuesRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:com.dhan.cache.PingRequest)
-    PingRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:com.dhan.cache.DeleteAllValuesRequest)
+    DeleteAllValuesRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use PingRequest.newBuilder() to construct.
-  private PingRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use DeleteAllValuesRequest.newBuilder() to construct.
+  private DeleteAllValuesRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private PingRequest() {
-    message_ = "";
+  private DeleteAllValuesRequest() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new PingRequest();
+    return new DeleteAllValuesRequest();
   }
 
   @java.lang.Override
@@ -35,7 +34,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private PingRequest(
+  private DeleteAllValuesRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -53,12 +52,6 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            message_ = s;
-            break;
-          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -80,51 +73,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_PingRequest_descriptor;
+    return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_DeleteAllValuesRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_PingRequest_fieldAccessorTable
+    return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_DeleteAllValuesRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.dhan.cache.PingRequest.class, com.dhan.cache.PingRequest.Builder.class);
-  }
-
-  public static final int MESSAGE_FIELD_NUMBER = 1;
-  private volatile java.lang.Object message_;
-  /**
-   * <code>string message = 1;</code>
-   * @return The message.
-   */
-  public java.lang.String getMessage() {
-    java.lang.Object ref = message_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      message_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string message = 1;</code>
-   * @return The bytes for message.
-   */
-  public com.google.protobuf.ByteString
-      getMessageBytes() {
-    java.lang.Object ref = message_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      message_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+            com.dhan.cache.DeleteAllValuesRequest.class, com.dhan.cache.DeleteAllValuesRequest.Builder.class);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -141,9 +98,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getMessageBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, message_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -153,9 +107,6 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getMessageBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, message_);
-    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -166,13 +117,11 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.dhan.cache.PingRequest)) {
+    if (!(obj instanceof com.dhan.cache.DeleteAllValuesRequest)) {
       return super.equals(obj);
     }
-    com.dhan.cache.PingRequest other = (com.dhan.cache.PingRequest) obj;
+    com.dhan.cache.DeleteAllValuesRequest other = (com.dhan.cache.DeleteAllValuesRequest) obj;
 
-    if (!getMessage()
-        .equals(other.getMessage())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -184,76 +133,74 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
-    hash = (53 * hash) + getMessage().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.dhan.cache.PingRequest parseFrom(
+  public static com.dhan.cache.DeleteAllValuesRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.dhan.cache.PingRequest parseFrom(
+  public static com.dhan.cache.DeleteAllValuesRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.dhan.cache.PingRequest parseFrom(
+  public static com.dhan.cache.DeleteAllValuesRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.dhan.cache.PingRequest parseFrom(
+  public static com.dhan.cache.DeleteAllValuesRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.dhan.cache.PingRequest parseFrom(byte[] data)
+  public static com.dhan.cache.DeleteAllValuesRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.dhan.cache.PingRequest parseFrom(
+  public static com.dhan.cache.DeleteAllValuesRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.dhan.cache.PingRequest parseFrom(java.io.InputStream input)
+  public static com.dhan.cache.DeleteAllValuesRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.dhan.cache.PingRequest parseFrom(
+  public static com.dhan.cache.DeleteAllValuesRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.dhan.cache.PingRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.dhan.cache.DeleteAllValuesRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.dhan.cache.PingRequest parseDelimitedFrom(
+  public static com.dhan.cache.DeleteAllValuesRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.dhan.cache.PingRequest parseFrom(
+  public static com.dhan.cache.DeleteAllValuesRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.dhan.cache.PingRequest parseFrom(
+  public static com.dhan.cache.DeleteAllValuesRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -266,7 +213,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.dhan.cache.PingRequest prototype) {
+  public static Builder newBuilder(com.dhan.cache.DeleteAllValuesRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -283,29 +230,29 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *Ping
+   *Delete All Values
    * </pre>
    *
-   * Protobuf type {@code com.dhan.cache.PingRequest}
+   * Protobuf type {@code com.dhan.cache.DeleteAllValuesRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:com.dhan.cache.PingRequest)
-      com.dhan.cache.PingRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:com.dhan.cache.DeleteAllValuesRequest)
+      com.dhan.cache.DeleteAllValuesRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_PingRequest_descriptor;
+      return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_DeleteAllValuesRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_PingRequest_fieldAccessorTable
+      return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_DeleteAllValuesRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.dhan.cache.PingRequest.class, com.dhan.cache.PingRequest.Builder.class);
+              com.dhan.cache.DeleteAllValuesRequest.class, com.dhan.cache.DeleteAllValuesRequest.Builder.class);
     }
 
-    // Construct using com.dhan.cache.PingRequest.newBuilder()
+    // Construct using com.dhan.cache.DeleteAllValuesRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -323,25 +270,23 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      message_ = "";
-
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_PingRequest_descriptor;
+      return com.dhan.cache.CacheServiceOuterClass.internal_static_com_dhan_cache_DeleteAllValuesRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.dhan.cache.PingRequest getDefaultInstanceForType() {
-      return com.dhan.cache.PingRequest.getDefaultInstance();
+    public com.dhan.cache.DeleteAllValuesRequest getDefaultInstanceForType() {
+      return com.dhan.cache.DeleteAllValuesRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.dhan.cache.PingRequest build() {
-      com.dhan.cache.PingRequest result = buildPartial();
+    public com.dhan.cache.DeleteAllValuesRequest build() {
+      com.dhan.cache.DeleteAllValuesRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -349,9 +294,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.dhan.cache.PingRequest buildPartial() {
-      com.dhan.cache.PingRequest result = new com.dhan.cache.PingRequest(this);
-      result.message_ = message_;
+    public com.dhan.cache.DeleteAllValuesRequest buildPartial() {
+      com.dhan.cache.DeleteAllValuesRequest result = new com.dhan.cache.DeleteAllValuesRequest(this);
       onBuilt();
       return result;
     }
@@ -390,20 +334,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.dhan.cache.PingRequest) {
-        return mergeFrom((com.dhan.cache.PingRequest)other);
+      if (other instanceof com.dhan.cache.DeleteAllValuesRequest) {
+        return mergeFrom((com.dhan.cache.DeleteAllValuesRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.dhan.cache.PingRequest other) {
-      if (other == com.dhan.cache.PingRequest.getDefaultInstance()) return this;
-      if (!other.getMessage().isEmpty()) {
-        message_ = other.message_;
-        onChanged();
-      }
+    public Builder mergeFrom(com.dhan.cache.DeleteAllValuesRequest other) {
+      if (other == com.dhan.cache.DeleteAllValuesRequest.getDefaultInstance()) return this;
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -419,93 +359,17 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.dhan.cache.PingRequest parsedMessage = null;
+      com.dhan.cache.DeleteAllValuesRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.dhan.cache.PingRequest) e.getUnfinishedMessage();
+        parsedMessage = (com.dhan.cache.DeleteAllValuesRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
         }
       }
-      return this;
-    }
-
-    private java.lang.Object message_ = "";
-    /**
-     * <code>string message = 1;</code>
-     * @return The message.
-     */
-    public java.lang.String getMessage() {
-      java.lang.Object ref = message_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        message_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string message = 1;</code>
-     * @return The bytes for message.
-     */
-    public com.google.protobuf.ByteString
-        getMessageBytes() {
-      java.lang.Object ref = message_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        message_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string message = 1;</code>
-     * @param value The message to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMessage(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      message_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string message = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearMessage() {
-      
-      message_ = getDefaultInstance().getMessage();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string message = 1;</code>
-     * @param value The bytes for message to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMessageBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      message_ = value;
-      onChanged();
       return this;
     }
     @java.lang.Override
@@ -521,41 +385,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:com.dhan.cache.PingRequest)
+    // @@protoc_insertion_point(builder_scope:com.dhan.cache.DeleteAllValuesRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:com.dhan.cache.PingRequest)
-  private static final com.dhan.cache.PingRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:com.dhan.cache.DeleteAllValuesRequest)
+  private static final com.dhan.cache.DeleteAllValuesRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.dhan.cache.PingRequest();
+    DEFAULT_INSTANCE = new com.dhan.cache.DeleteAllValuesRequest();
   }
 
-  public static com.dhan.cache.PingRequest getDefaultInstance() {
+  public static com.dhan.cache.DeleteAllValuesRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<PingRequest>
-      PARSER = new com.google.protobuf.AbstractParser<PingRequest>() {
+  private static final com.google.protobuf.Parser<DeleteAllValuesRequest>
+      PARSER = new com.google.protobuf.AbstractParser<DeleteAllValuesRequest>() {
     @java.lang.Override
-    public PingRequest parsePartialFrom(
+    public DeleteAllValuesRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new PingRequest(input, extensionRegistry);
+      return new DeleteAllValuesRequest(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<PingRequest> parser() {
+  public static com.google.protobuf.Parser<DeleteAllValuesRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<PingRequest> getParserForType() {
+  public com.google.protobuf.Parser<DeleteAllValuesRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.dhan.cache.PingRequest getDefaultInstanceForType() {
+  public com.dhan.cache.DeleteAllValuesRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

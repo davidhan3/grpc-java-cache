@@ -22,7 +22,7 @@ dependencies {
     implementation "io.grpc:grpc-stub:${grpcVersion}"
     implementation  "org.apache.tomcat:annotations-api:6.0.53"
 
-    implementation "com.dhan.cache:grpc-cache-proto:1.0.0"
+    implementation "com.dhan.cache:grpc-cache-proto:1.0.0-SNAPSHOT"
 
     testCompile "io.grpc:grpc-testing:${grpcVersion}"
     testCompile "junit:junit:4.12"
