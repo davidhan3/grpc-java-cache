@@ -182,6 +182,37 @@ public final class CacheServiceGrpc {
     return getDeleteAllValuesMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.dhan.cache.GetKeysRequest,
+      com.dhan.cache.GetKeysResponse> getGetKeysMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getKeys",
+      requestType = com.dhan.cache.GetKeysRequest.class,
+      responseType = com.dhan.cache.GetKeysResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.dhan.cache.GetKeysRequest,
+      com.dhan.cache.GetKeysResponse> getGetKeysMethod() {
+    io.grpc.MethodDescriptor<com.dhan.cache.GetKeysRequest, com.dhan.cache.GetKeysResponse> getGetKeysMethod;
+    if ((getGetKeysMethod = CacheServiceGrpc.getGetKeysMethod) == null) {
+      synchronized (CacheServiceGrpc.class) {
+        if ((getGetKeysMethod = CacheServiceGrpc.getGetKeysMethod) == null) {
+          CacheServiceGrpc.getGetKeysMethod = getGetKeysMethod =
+              io.grpc.MethodDescriptor.<com.dhan.cache.GetKeysRequest, com.dhan.cache.GetKeysResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getKeys"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.dhan.cache.GetKeysRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.dhan.cache.GetKeysResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CacheServiceMethodDescriptorSupplier("getKeys"))
+              .build();
+        }
+      }
+    }
+    return getGetKeysMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -268,6 +299,13 @@ public final class CacheServiceGrpc {
       asyncUnimplementedUnaryCall(getDeleteAllValuesMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getKeys(com.dhan.cache.GetKeysRequest request,
+        io.grpc.stub.StreamObserver<com.dhan.cache.GetKeysResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetKeysMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -305,6 +343,13 @@ public final class CacheServiceGrpc {
                 com.dhan.cache.DeleteAllValuesRequest,
                 com.dhan.cache.DeleteAllValuesResponse>(
                   this, METHODID_DELETE_ALL_VALUES)))
+          .addMethod(
+            getGetKeysMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.dhan.cache.GetKeysRequest,
+                com.dhan.cache.GetKeysResponse>(
+                  this, METHODID_GET_KEYS)))
           .build();
     }
   }
@@ -365,6 +410,14 @@ public final class CacheServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getDeleteAllValuesMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getKeys(com.dhan.cache.GetKeysRequest request,
+        io.grpc.stub.StreamObserver<com.dhan.cache.GetKeysResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetKeysMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -417,6 +470,13 @@ public final class CacheServiceGrpc {
     public com.dhan.cache.DeleteAllValuesResponse deleteAllValues(com.dhan.cache.DeleteAllValuesRequest request) {
       return blockingUnaryCall(
           getChannel(), getDeleteAllValuesMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.dhan.cache.GetKeysResponse getKeys(com.dhan.cache.GetKeysRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetKeysMethod(), getCallOptions(), request);
     }
   }
 
@@ -476,6 +536,14 @@ public final class CacheServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getDeleteAllValuesMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.dhan.cache.GetKeysResponse> getKeys(
+        com.dhan.cache.GetKeysRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetKeysMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_PING = 0;
@@ -483,6 +551,7 @@ public final class CacheServiceGrpc {
   private static final int METHODID_PUT_VALUE = 2;
   private static final int METHODID_DELETE_VALUE = 3;
   private static final int METHODID_DELETE_ALL_VALUES = 4;
+  private static final int METHODID_GET_KEYS = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -520,6 +589,10 @@ public final class CacheServiceGrpc {
         case METHODID_DELETE_ALL_VALUES:
           serviceImpl.deleteAllValues((com.dhan.cache.DeleteAllValuesRequest) request,
               (io.grpc.stub.StreamObserver<com.dhan.cache.DeleteAllValuesResponse>) responseObserver);
+          break;
+        case METHODID_GET_KEYS:
+          serviceImpl.getKeys((com.dhan.cache.GetKeysRequest) request,
+              (io.grpc.stub.StreamObserver<com.dhan.cache.GetKeysResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -587,6 +660,7 @@ public final class CacheServiceGrpc {
               .addMethod(getPutValueMethod())
               .addMethod(getDeleteValueMethod())
               .addMethod(getDeleteAllValuesMethod())
+              .addMethod(getGetKeysMethod())
               .build();
         }
       }

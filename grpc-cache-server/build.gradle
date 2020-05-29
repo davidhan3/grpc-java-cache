@@ -20,12 +20,20 @@ dependencies {
     implementation "io.grpc:grpc-netty-shaded:${grpcVersion}"
     implementation "io.grpc:grpc-protobuf:${grpcVersion}"
     implementation "io.grpc:grpc-stub:${grpcVersion}"
+    implementation "io.grpc:grpc-core:${grpcVersion}"
     implementation  "org.apache.tomcat:annotations-api:6.0.53"
 
     implementation "com.dhan.cache:grpc-cache-proto:1.0.0-SNAPSHOT"
 
     testCompile "io.grpc:grpc-testing:${grpcVersion}"
     testCompile "junit:junit:4.12"
+}
+
+test {
+    useJUnit()
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
 }
 
 jar {

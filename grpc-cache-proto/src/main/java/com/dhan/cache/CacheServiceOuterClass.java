@@ -64,6 +64,16 @@ public final class CacheServiceOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_dhan_cache_DeleteAllValuesResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_dhan_cache_GetKeysRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_dhan_cache_GetKeysRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_dhan_cache_GetKeysResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_dhan_cache_GetKeysResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -83,18 +93,21 @@ public final class CacheServiceOuterClass {
       "ey\030\001 \001(\t\"\'\n\023DeleteValueResponse\022\020\n\010respo" +
       "nse\030\001 \001(\010\"\030\n\026DeleteAllValuesRequest\"+\n\027D" +
       "eleteAllValuesResponse\022\020\n\010response\030\001 \001(\010" +
-      "2\253\003\n\014CacheService\022A\n\004ping\022\033.com.dhan.cac" +
-      "he.PingRequest\032\034.com.dhan.cache.PingResp" +
-      "onse\022M\n\010getValue\022\037.com.dhan.cache.GetVal" +
-      "ueRequest\032 .com.dhan.cache.GetValueRespo" +
-      "nse\022M\n\010putValue\022\037.com.dhan.cache.PutValu" +
-      "eRequest\032 .com.dhan.cache.PutValueRespon" +
-      "se\022V\n\013deleteValue\022\".com.dhan.cache.Delet" +
-      "eValueRequest\032#.com.dhan.cache.DeleteVal" +
-      "ueResponse\022b\n\017deleteAllValues\022&.com.dhan" +
-      ".cache.DeleteAllValuesRequest\032\'.com.dhan" +
-      ".cache.DeleteAllValuesResponseB\002P\001b\006prot" +
-      "o3"
+      "\"\020\n\016GetKeysRequest\"\037\n\017GetKeysResponse\022\014\n" +
+      "\004keys\030\001 \003(\t2\367\003\n\014CacheService\022A\n\004ping\022\033.c" +
+      "om.dhan.cache.PingRequest\032\034.com.dhan.cac" +
+      "he.PingResponse\022M\n\010getValue\022\037.com.dhan.c" +
+      "ache.GetValueRequest\032 .com.dhan.cache.Ge" +
+      "tValueResponse\022M\n\010putValue\022\037.com.dhan.ca" +
+      "che.PutValueRequest\032 .com.dhan.cache.Put" +
+      "ValueResponse\022V\n\013deleteValue\022\".com.dhan." +
+      "cache.DeleteValueRequest\032#.com.dhan.cach" +
+      "e.DeleteValueResponse\022b\n\017deleteAllValues" +
+      "\022&.com.dhan.cache.DeleteAllValuesRequest" +
+      "\032\'.com.dhan.cache.DeleteAllValuesRespons" +
+      "e\022J\n\007getKeys\022\036.com.dhan.cache.GetKeysReq" +
+      "uest\032\037.com.dhan.cache.GetKeysResponseB\002P" +
+      "\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -160,6 +173,18 @@ public final class CacheServiceOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_dhan_cache_DeleteAllValuesResponse_descriptor,
         new java.lang.String[] { "Response", });
+    internal_static_com_dhan_cache_GetKeysRequest_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_com_dhan_cache_GetKeysRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_dhan_cache_GetKeysRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_com_dhan_cache_GetKeysResponse_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_com_dhan_cache_GetKeysResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_dhan_cache_GetKeysResponse_descriptor,
+        new java.lang.String[] { "Keys", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

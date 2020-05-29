@@ -1,18 +1,25 @@
 package com.dhan.cache;
 
+import com.google.protobuf.ProtocolStringList;
+import io.grpc.Status;
+import io.grpc.StatusRuntimeException;
 import io.grpc.inprocess.InProcessChannelBuilder;
 import io.grpc.inprocess.InProcessServerBuilder;
 
 import io.grpc.testing.GrpcCleanupRule;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+import static org.junit.Assert.*;
 
 @RunWith(JUnit4.class)
 public class CacheServiceImplTest {
@@ -24,6 +31,7 @@ public class CacheServiceImplTest {
 
     @Before
     public void setup() throws Exception {
+        Cache.getInstance().deleteAll();
         String serverName = InProcessServerBuilder.generateName();
 
         grpcCleanup.register(InProcessServerBuilder
@@ -34,7 +42,7 @@ public class CacheServiceImplTest {
     }
 
     @Test
-    public void testPing() throws Exception {
+    public void ping() throws Exception {
         PingResponse response = stub.ping(PingRequest.newBuilder()
                                                      .setMessage("Ping")
                                                      .build());
@@ -45,7 +53,7 @@ public class CacheServiceImplTest {
     }
 
     @Test
-    public void testPutThenGet() throws Exception {
+    public void putThenGet() throws Exception {
         PutValueResponse putResponse = stub.putValue(PutValueRequest.newBuilder()
                                                                     .setKey("Foo")
                                                                     .setValue("Bar")
@@ -55,10 +63,70 @@ public class CacheServiceImplTest {
 
         assertTrue(putResponse.getResponse());
 
-        GetValueResponse getResponse = stub.getValue(GetValueRequest.newBuilder().setKey("Foo").build());
+        GetValueResponse getResponse = stub.getValue(GetValueRequest.newBuilder()
+                                                                    .setKey("Foo")
+                                                                    .build());
 
         System.out.println("Get Value response: "+ getResponse);
 
         assertEquals("Bar", getResponse.getValue());
+    }
+
+    @Test
+    public void getAllKeys() throws Exception {
+        stub.putValue(PutValueRequest.newBuilder().setKey("A").setValue("B").build());
+        stub.putValue(PutValueRequest.newBuilder().setKey("B").setValue("B").build());
+        stub.putValue(PutValueRequest.newBuilder().setKey("C").setValue("B").build());
+        stub.putValue(PutValueRequest.newBuilder().setKey("D").setValue("B").build());
+        GetKeysResponse response = stub.getKeys(GetKeysRequest.newBuilder().build());
+
+        Set<String> keySet = new HashSet<String>(response.getKeysList());
+
+        assertEquals(keySet.size(), 4);
+        assertTrue(keySet.contains("A"));
+        assertTrue(keySet.contains("B"));
+        assertTrue(keySet.contains("C"));
+        assertTrue(keySet.contains("D"));
+    }
+
+    @Test
+    public void getNullKey() throws Exception{
+        try {
+            GetValueResponse getResponse = stub.getValue(GetValueRequest.newBuilder()
+                                                                        .setKey("Foo")
+                                                                        .build());
+        } catch (StatusRuntimeException e){
+            assertEquals(e.getStatus().getCode(), Status.INVALID_ARGUMENT.getCode());
+            assertEquals(e.getMessage(), "INVALID_ARGUMENT: Key doesn't exist");
+            return;
+        }
+        Assert.fail("Null key exception not caught");
+    }
+
+    @Test
+    public void deleteKey() throws Exception {
+        stub.putValue(PutValueRequest.newBuilder().setKey("A").setValue("Val").build());
+        stub.putValue(PutValueRequest.newBuilder().setKey("B").setValue("Val").build());
+
+        stub.deleteValue(DeleteValueRequest.newBuilder().setKey("A").build());
+
+        GetKeysResponse response = stub.getKeys(GetKeysRequest.newBuilder().build());
+        Set<String> keySet = new HashSet<String>(response.getKeysList());
+
+        assertFalse(keySet.contains("A"));
+        assertTrue(keySet.contains("B"));
+    }
+
+    @Test
+    public void deleteAllKeys() throws Exception{
+        stub.putValue(PutValueRequest.newBuilder().setKey("A").setValue("Val").build());
+        stub.putValue(PutValueRequest.newBuilder().setKey("B").setValue("Val").build());
+
+        stub.deleteAllValues(DeleteAllValuesRequest.newBuilder().build());
+
+        GetKeysResponse response = stub.getKeys(GetKeysRequest.newBuilder().build());
+        Set<String> keySet = new HashSet<String>(response.getKeysList());
+
+        assertTrue(keySet.isEmpty());
     }
 }

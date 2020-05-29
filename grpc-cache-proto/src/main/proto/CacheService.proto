@@ -47,6 +47,13 @@ message DeleteAllValuesResponse{
   bool response = 1;
 }
 
+//Get Keys
+message GetKeysRequest{}
+
+message GetKeysResponse{
+  repeated string keys = 1;
+}
+
 service CacheService {
   // Define a RPC operation
   rpc ping(PingRequest) returns (PingResponse);
@@ -54,4 +61,5 @@ service CacheService {
   rpc putValue(PutValueRequest) returns (PutValueResponse);
   rpc deleteValue(DeleteValueRequest) returns (DeleteValueResponse);
   rpc deleteAllValues(DeleteAllValuesRequest) returns (DeleteAllValuesResponse);
+  rpc getKeys(GetKeysRequest) returns (GetKeysResponse);
 }

@@ -1,5 +1,6 @@
 package com.dhan.cache;
 
+import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
 public class CacheServiceImpl extends CacheServiceGrpc.CacheServiceImplBase{
@@ -20,7 +21,40 @@ public class CacheServiceImpl extends CacheServiceGrpc.CacheServiceImplBase{
     @Override
     public void getValue(GetValueRequest request, StreamObserver<GetValueResponse> responseObserver) {
         System.out.println("Get Request received: "+request);
-        responseObserver.onNext(getValue(request));
+
+        String val = getValue(request);
+
+        if(val == null){
+            responseObserver.onError(Status.INVALID_ARGUMENT
+                                            .withDescription("Key doesn't exist")
+                                            .asRuntimeException());
+        } else{
+            responseObserver.onNext(GetValueResponse.newBuilder()
+                                                    .setValue(val)
+                                                    .build());
+            responseObserver.onCompleted();
+        }
+
+    }
+
+    @Override
+    public void getKeys(GetKeysRequest request, StreamObserver<GetKeysResponse> responseObserver) {
+        System.out.println("Get Keys Request recieved");
+        responseObserver.onNext(GetKeysResponse.newBuilder().addAllKeys(Cache.getInstance().getKeys()).build());
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void deleteValue(DeleteValueRequest request, StreamObserver<DeleteValueResponse> responseObserver) {
+        System.out.println("Delete Request received: " + request);
+        responseObserver.onNext(deleteValue(request));
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void deleteAllValues(DeleteAllValuesRequest request, StreamObserver<DeleteAllValuesResponse> responseObserver) {
+        System.out.println("Delete All Request received");
+        responseObserver.onNext(deleteAllValues());
         responseObserver.onCompleted();
     }
 
@@ -30,19 +64,31 @@ public class CacheServiceImpl extends CacheServiceGrpc.CacheServiceImplBase{
         return response.build();
     }
 
-    private GetValueResponse getValue(GetValueRequest request) {
-        String value = Cache.getInstance().get(request.getKey());
-
-        return GetValueResponse.newBuilder()
-                .setValue(value)
-                .build();
+    private String getValue(GetValueRequest request) {
+        return Cache.getInstance().get(request.getKey());
     }
 
     private PutValueResponse putValue(PutValueRequest request) {
-        Cache.getInstance().put(request.getKey(), request.getValue());
+        boolean val = Cache.getInstance().put(request.getKey(), request.getValue());
 
         return PutValueResponse.newBuilder()
-                .setResponse(true)
-                .build();
+                               .setResponse(val)
+                               .build();
+    }
+
+    private DeleteValueResponse deleteValue(DeleteValueRequest request) {
+        boolean val = Cache.getInstance().delete(request.getKey());
+
+        return DeleteValueResponse.newBuilder()
+                                  .setResponse(val)
+                                  .build();
+    }
+
+    private DeleteAllValuesResponse deleteAllValues(){
+        boolean val = Cache.getInstance().deleteAll();
+
+        return DeleteAllValuesResponse.newBuilder()
+                                      .setResponse(val)
+                                      .build();
     }
 }

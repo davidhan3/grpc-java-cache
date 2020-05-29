@@ -1,6 +1,7 @@
 package com.dhan.cache;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class Cache {
     private HashMap<String, String> map;
@@ -26,5 +27,27 @@ public class Cache {
         } catch (Exception e){
             return false;
         }
+    }
+
+    public boolean delete(String key){
+        try{
+            map.remove(key);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean deleteAll(){
+        try{
+            map.clear();
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public Set<String> getKeys(){
+        return map.keySet();
     }
 }
