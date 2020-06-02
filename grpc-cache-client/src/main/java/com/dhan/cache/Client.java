@@ -6,7 +6,7 @@ public class Client
 {
     public static void main( String[] args ) throws Exception
     {
-        Command command = getOperation(args[0]);
+        Command command = CommandOperation.getOperation(args);
         if(command == Command.INVALID){
             System.out.println("Invalid command received");
             System.exit(1);
@@ -19,33 +19,5 @@ public class Client
         cache.operation(command, args);
 
         channel.shutdownNow();
-    }
-
-    //Move this to the command class itself
-    private static Command getOperation(String argument){
-        Command c;
-        switch(argument.toLowerCase()){
-            case "ping":
-                c = Command.PING;
-                break;
-            case "get":
-                c = Command.GET;
-                break;
-            case "put":
-                c = Command.PUT;
-                break;
-            case "delete":
-                c = Command.DELETE;
-                break;
-            case "deleteall":
-                c = Command.DELETEALL;
-                break;
-            case "getkeys":
-                c = Command.GETKEYS;
-                break;
-            default:
-                c = Command.INVALID;
-        }
-        return c;
     }
 }
