@@ -6,43 +6,46 @@ public class Client
 {
     public static void main( String[] args ) throws Exception
     {
-        // Channel is the abstraction to connect to a service endpoint
-        // Let's use plaintext communication because we don't have certs
-        final ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:8080")
-                .usePlaintext()
-                .build();
-
-        // It is up to the client to determine whether to block the call
-        // Here we create a blocking stub, but an async stub,
-        // or an async stub with Future are always possible.
+        Command command = getOperation(args[0]);
+        if(command == Command.INVALID){
+            System.out.println("Invalid command received");
+            System.exit(1);
+        }
+        // Channel is the abstraction to connect to a service endpoint, plaintext because no SSL
+        final ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:8080").usePlaintext().build();
         CacheServiceGrpc.CacheServiceBlockingStub stub = CacheServiceGrpc.newBlockingStub(channel);
+        CacheClient cache = new CacheClient(channel, stub);
 
-        //ping(channel, stub);
-        put(channel, stub);
-        get(channel, stub);
+        cache.operation(command, args);
 
-        // A Channel should be shutdown before stopping the process.
         channel.shutdownNow();
     }
 
-    private static void ping(ManagedChannel channel, CacheServiceGrpc.CacheServiceBlockingStub stub) {
-        PingRequest request = PingRequest.newBuilder().setMessage("Ping").build();
-        PingResponse response = stub.ping(request);
-        System.out.println(response);
-    }
-
-    private static void put(ManagedChannel channel, CacheServiceGrpc.CacheServiceBlockingStub stub) {
-        PutValueRequest request = PutValueRequest.newBuilder()
-                                                 .setKey("Foo")
-                                                 .setValue("Bar")
-                                                 .build();
-        PutValueResponse response = stub.putValue(request);
-        System.out.println(response);
-    }
-
-    private static void get(ManagedChannel channel, CacheServiceGrpc.CacheServiceBlockingStub stub) {
-        GetValueRequest request = GetValueRequest.newBuilder().setKey("Foo").build();
-        GetValueResponse response = stub.getValue(request);
-        System.out.println(response);
+    //Move this to the command class itself
+    private static Command getOperation(String argument){
+        Command c;
+        switch(argument.toLowerCase()){
+            case "ping":
+                c = Command.PING;
+                break;
+            case "get":
+                c = Command.GET;
+                break;
+            case "put":
+                c = Command.PUT;
+                break;
+            case "delete":
+                c = Command.DELETE;
+                break;
+            case "deleteall":
+                c = Command.DELETEALL;
+                break;
+            case "getkeys":
+                c = Command.GETKEYS;
+                break;
+            default:
+                c = Command.INVALID;
+        }
+        return c;
     }
 }
