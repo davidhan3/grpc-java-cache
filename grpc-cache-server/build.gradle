@@ -15,18 +15,21 @@ repositories {
 }
 
 def grpcVersion = "1.29.0"
+def tomcatAnnotationsVersion = "6.0.53"
+def junitVersion = "4.12"
+def cacheProtobufVersion = "1.0.0-SNAPSHOT"
 
 dependencies {
     implementation "io.grpc:grpc-netty-shaded:${grpcVersion}"
     implementation "io.grpc:grpc-protobuf:${grpcVersion}"
     implementation "io.grpc:grpc-stub:${grpcVersion}"
     implementation "io.grpc:grpc-core:${grpcVersion}"
-    implementation  "org.apache.tomcat:annotations-api:6.0.53"
+    implementation  "org.apache.tomcat:annotations-api:${tomcatAnnotationsVersion}"
 
-    implementation "com.dhan.cache:grpc-cache-proto:1.0.0-SNAPSHOT"
+    implementation "com.dhan.cache:grpc-cache-proto:${cacheProtobufVersion}"
 
-    testCompile "io.grpc:grpc-testing:${grpcVersion}"
-    testCompile "junit:junit:4.12"
+    testImplementation "io.grpc:grpc-testing:${grpcVersion}"
+    testImplementation "junit:junit:${junitVersion}"
 }
 
 test {

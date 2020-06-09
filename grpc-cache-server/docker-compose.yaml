@@ -2,5 +2,7 @@ version: '3'
 services:
   grpc-server:
     image: "dhan/grpc-cache-server:1.0.0"
+    environment:
+      - GRPC_CACHE_SERVER_PORT=8081
     ports:
-      - "8080:8080"
+      - "8080:8081"

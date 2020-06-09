@@ -5,6 +5,7 @@
 ### Intellij ###
 # User-specific stuff
 **.idea/
+**out/
 
 ### Java ###
 # Compiled class file
