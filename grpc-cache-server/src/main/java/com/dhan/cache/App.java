@@ -4,10 +4,6 @@ package com.dhan.cache;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Properties;
 
 public class App
@@ -22,8 +18,9 @@ public class App
             System.exit(1);
         }
         System.out.println("Starting gRPC cache server on port "+prop.get("port"));
+
         // Create a new server to listen on port 8080
-        Server server = ServerBuilder.forPort((Integer) prop.get("port"))
+        Server server = ServerBuilder.forPort(Integer.parseInt(prop.getProperty("port")))
                 .addService(new CacheServiceImpl())
                 .build();
 
