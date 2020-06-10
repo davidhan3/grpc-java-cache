@@ -2,11 +2,15 @@ package com.dhan.cache;
 
 import io.grpc.ManagedChannel;
 import io.grpc.Status;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class CacheClient {
+
+    private static final Logger logger = LogManager.getLogger(CacheClient.class);
 
     ManagedChannel channel;
     CacheServiceGrpc.CacheServiceBlockingStub stub;
@@ -16,10 +20,6 @@ public class CacheClient {
         stub = s;
     }
 
-    /**
-     * @param command
-     * @param args
-     */
     public void operation(Command command, String[] args){
         System.out.println(""+command+" command received");
 
@@ -29,23 +29,23 @@ public class CacheClient {
 
         switch(command){
             case PING:
-                System.out.println("Response: "+ ping());
+                logger.info("Response: "+ ping());
                 break;
             case GET:
-                System.out.println("Response: "+ get(args[1]));
+                logger.info("Response: "+ get(args[1]));
                 break;
             case PUT:
-                System.out.println("Response: "+ put(args[1], args[2]));
+                logger.info("Response: "+ put(args[1], args[2]));
                 break;
             case DELETE:
-                System.out.println("Response: "+delete(args[1]));
+                logger.info("Response: "+delete(args[1]));
                 break;
             case DELETEALL:
-                System.out.println("Response: "+deleteAll());
+                logger.info("Response: "+deleteAll());
                 break;
             case GETKEYS:
                 Set<String> keys = getKeys();
-                System.out.println(keys.toString());
+                logger.info(keys.toString());
         }
     }
 

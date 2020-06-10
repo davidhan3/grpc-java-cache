@@ -21,6 +21,7 @@ enum Command {
 }
 
 public class CommandOperation {
+
     //Move this to the command class itself
     public static Command getOperation(String[] args){
         Command c;

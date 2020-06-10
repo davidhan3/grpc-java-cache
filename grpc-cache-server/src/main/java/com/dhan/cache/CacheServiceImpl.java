@@ -2,25 +2,29 @@ package com.dhan.cache;
 
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class CacheServiceImpl extends CacheServiceGrpc.CacheServiceImplBase{
+    private static final Logger logger = LogManager.getLogger(CacheServiceImpl.class);
+
     @Override
     public void ping(PingRequest request, StreamObserver<PingResponse> responseObserver) {
-        System.out.println("Ping Request received: "+request);
+        logger.info("Ping Request received: "+request);
         responseObserver.onNext(ping(request));
         responseObserver.onCompleted();
     }
 
     @Override
     public void putValue(PutValueRequest request, StreamObserver<PutValueResponse> responseObserver) {
-        System.out.println("Put Request received: "+request);
+        logger.info("Put Request received: "+request);
         responseObserver.onNext(putValue(request));
         responseObserver.onCompleted();
     }
 
     @Override
     public void getValue(GetValueRequest request, StreamObserver<GetValueResponse> responseObserver) {
-        System.out.println("Get Request received: "+request);
+        logger.info("Get Request received: "+request);
 
         String val = getValue(request);
 
@@ -39,21 +43,21 @@ public class CacheServiceImpl extends CacheServiceGrpc.CacheServiceImplBase{
 
     @Override
     public void getKeys(GetKeysRequest request, StreamObserver<GetKeysResponse> responseObserver) {
-        System.out.println("Get Keys Request recieved");
+        logger.info("Get Keys Request recieved");
         responseObserver.onNext(GetKeysResponse.newBuilder().addAllKeys(Cache.getInstance().getKeys()).build());
         responseObserver.onCompleted();
     }
 
     @Override
     public void deleteValue(DeleteValueRequest request, StreamObserver<DeleteValueResponse> responseObserver) {
-        System.out.println("Delete Request received: " + request);
+        logger.info("Delete Request received: " + request);
         responseObserver.onNext(deleteValue(request));
         responseObserver.onCompleted();
     }
 
     @Override
     public void deleteAllValues(DeleteAllValuesRequest request, StreamObserver<DeleteAllValuesResponse> responseObserver) {
-        System.out.println("Delete All Request received");
+        logger.info("Delete All Request received");
         responseObserver.onNext(deleteAllValues());
         responseObserver.onCompleted();
     }
